@@ -1,0 +1,58 @@
+syntax = "proto3";
+package pb;
+option go_package = "internal/pb";
+
+message Category{
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message CreateCategoryRequest{
+    string name = 1;
+    string description = 2;
+}
+
+message CreateCategoryResponse {
+    Category category = 1;
+}
+
+message CreateCategoryStreamRequest{
+    string name = 1;
+    string description = 2;
+}
+
+message CreateCategoryStreamResponse {
+    repeated Category categories = 1;
+}
+
+message CreateCategoryStreamBidirectionalRequest{
+    string name = 1;
+    string description = 2;
+}
+
+message CreateCategoryStreamBidirectionalResponse {
+    Category category = 1;
+}
+
+message ListCategoryRequest{}
+
+message ListCategoryResponse{
+    repeated Category categories = 1;
+}
+
+message GetCategoryRequest{
+    string id = 1;
+}
+
+message GetCategoryResponse{
+    Category category = 1;
+}
+
+service CategoryService {
+    rpc CreateCategory(CreateCategoryRequest) returns (CreateCategoryResponse){}
+    rpc CreateCategoryStream(stream CreateCategoryStreamRequest) returns (CreateCategoryStreamResponse){}
+    rpc CreateCategoryStreamBidirectional(stream CreateCategoryStreamBidirectionalRequest) returns (stream CreateCategoryStreamBidirectionalResponse){}
+    rpc ListCategory(ListCategoryRequest) returns (ListCategoryResponse){}
+    rpc GetCategory(GetCategoryRequest) returns (GetCategoryResponse){}
+}

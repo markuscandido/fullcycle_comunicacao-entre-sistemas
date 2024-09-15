@@ -1,0 +1,21 @@
+alive: consulserver02 172.18.0.4:8301
+alive: consulclient02 172.18.0.5:8301
+clock: 1
+alive: consulserver01 172.18.0.3:8301
+alive: consulclient01 172.18.0.2:8301
+alive: consulserver03 172.18.0.6:8301
+clock: 2
+event-clock: 1
+alive: consulserver02 172.18.0.2:8301
+alive: consulclient01 172.18.0.3:8301
+clock: 3
+alive: consulclient02 172.18.0.4:8301
+clock: 4
+alive: consulserver02 172.18.0.5:8301
+alive: consulclient02 172.18.0.4:8301
+alive: consulserver01 172.18.0.2:8301
+alive: consulclient01 172.18.0.3:8301
+alive: consulserver03 172.18.0.6:8301
+clock: 5
+event-clock: 2
+clock: 6

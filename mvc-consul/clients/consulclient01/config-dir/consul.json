@@ -1,0 +1,12 @@
+{
+    "server": false,
+    "data_dir": "/var/lib/consul",
+    "node_name": "consulclient01",
+    "retry_join": [
+        "consulserver01",
+        "consulserver02",
+        "consulserver03"
+    ],
+    "encrypt": "p8K3Jz78vnTveBajAKqtAmsqHtzb4lsyseoI2eDZzqQ=",
+    "client_addr": "0.0.0.0"
+}

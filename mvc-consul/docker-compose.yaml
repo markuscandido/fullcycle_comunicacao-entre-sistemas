@@ -1,0 +1,77 @@
+services: 
+    consulserver01:   
+        image: hashicorp/consul:1.19
+        container_name: consulserver01
+        hostname: consulserver01
+        command: consul agent -config-dir=/etc/consul.d
+        ports:
+          - "8501:8500"
+        networks:
+            consulnetwork:
+                aliases:
+                  - consulserver01
+        volumes: 
+            - ./servers/consulserver01/config-dir:/etc/consul.d:rw
+            - ./servers/consulserver01/data-dir:/var/lib/consul:rw
+    consulserver02:   
+        image: hashicorp/consul:1.19
+        container_name: consulserver02
+        hostname: consulserver02
+        command: consul agent -config-dir=/etc/consul.d
+        ports:
+          - "8502:8500"
+        networks:
+            consulnetwork:
+                aliases:
+                  - consulserver02
+        volumes: 
+            - ./servers/consulserver02/config-dir:/etc/consul.d:rw
+            - ./servers/consulserver02/data-dir:/var/lib/consul:rw
+    consulserver03:   
+        image: hashicorp/consul:1.19
+        container_name: consulserver03
+        hostname: consulserver03
+        command: consul agent -config-dir=/etc/consul.d
+        ports:
+          - "8503:8500"
+        networks:
+            consulnetwork:
+                aliases:
+                  - consulserver03
+        volumes: 
+            - ./servers/consulserver03/config-dir:/etc/consul.d:rw
+            - ./servers/consulserver03/data-dir:/var/lib/consul:rw
+    consulclient01:   
+        image: hashicorp/consul:1.19
+        container_name: consulclient01
+        hostname: consulclient01
+        # command: ["/bin/sh", "-c", "/etc/consul.d/start.sh"]
+        command: consul agent -config-dir=/etc/consul.d
+        networks:
+            consulnetwork:
+                aliases:
+                  - consulclient01
+        volumes: 
+            - ./clients/consulclient01/config-dir:/etc/consul.d:rw
+            - ./clients/consulclient01/data-dir:/var/lib/consul:rw
+            - ./clients/consulclient01/nginx/html:/usr/share/nginx/html:rw
+            - ./clients/consulclient01/nginx/default.conf:/etc/nginx/http.d/default.conf:rw
+            - ./clients/consulclient01/start.sh:/etc/consul.d/start.sh:rw  # Script de inicialização
+    consulclient02:   
+        image: hashicorp/consul:1.19
+        container_name: consulclient02
+        hostname: consulclient02
+        # command: ["/bin/sh", "-c", "/etc/consul.d/start.sh"]
+        command: consul agent -config-dir=/etc/consul.d
+        networks:
+            consulnetwork:
+                aliases:
+                  - consulclient02
+        volumes: 
+            - ./clients/consulclient02/config-dir:/etc/consul.d:rw
+            - ./clients/consulclient02/data-dir:/var/lib/consul:rw
+            - ./clients/consulclient02/nginx/html:/usr/share/nginx/html:rw
+            - ./clients/consulclient02/nginx/default.conf:/etc/nginx/http.d/default.conf:rw
+            - ./clients/consulclient02/start.sh:/etc/consul.d/start.sh:rw  # Script de inicialização
+networks:
+  consulnetwork:

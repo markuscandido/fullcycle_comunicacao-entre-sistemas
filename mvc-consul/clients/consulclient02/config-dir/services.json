@@ -1,0 +1,18 @@
+{
+    "service": {
+        "id": "nginx-b",
+        "name": "nginx",
+        "tags": [
+            "web",
+            "development"
+        ],
+        "port": 80,
+        "check": {
+            "id": "nginx-b",
+            "name": "HTTP on port 80",
+            "http": "http://localhost:80",
+            "interval": "10s",
+            "timeout": "1s"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+# como obter quais servidores estão atendendo determinado serviço (via console)
+dig @localhost -p 8600 nginx.service.consul
+# instalar o nginx
+apk -U add nginx bind-tools vim tcpdump
+# listar os processos
+ps
+# iniciar o nginx
+nginx
+# criar pasta para página index.html do nginx
+mkdir /usr/share/nginx/html -p
+# editar o default.conf e apontar que o root será a pasta recem criada
+vim /etc/nginx/http.d/default.conf
+    root /usr/share/nginx/html;
+    index index.html;
+# criar e incluir algum conteúdo na página index
+vim /usr/share/nginx/html/index.html
+# reiniciar o serviço do nginx
+nginx -s reload
+# fazer um teste para localhost:80
+curl localhost
+# para verificar os pacotes que estão sendo transportados na rede
+tcpdump -i eth0 -an port 8301 -A
