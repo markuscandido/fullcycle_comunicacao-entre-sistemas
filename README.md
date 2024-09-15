@@ -1,5 +1,7 @@
 # Comunicação entre sistemas
 
+Síntese do curso **Comunicação entre sistemas**, parte integrante do [FullCycle 3.0](https://curso.fullcycle.com.br/curso-fullcycle/) by [Full Cycle](https://fullcycle.com.br/)
+
 ## Introdução
 
 Este módulo aborda a comunicação entre sistemas, microserviços e arquiteturas distribuídas, destacando sua importância na arquitetura de software. O foco está em entender as diferentes formas de comunicação e escolher a mais adequada para cada contexto, algo crucial para o sucesso de projetos que utilizam microserviços.
